@@ -1,12 +1,12 @@
-##Basic Data Collection Using AWS
-###Why?
+## Basic Data Collection Using AWS
+### Why?
 Several participants in the UCLA-ITS Data Camp and/or monthly hack nights have been curious about using cloud services to repeatedly gather data over longer intervals of time. For example, one could query LA Metro's real-time bus location API to get bus locations every couple minutes for an entire week. 
 
 Running such an application on a cloud computing platform offers the advantage of not requiring your personal computer to be running and online for the entire collection period, in addition to providing a platform for potential ongoing analysis. 
 
 It's not especially hard to do so, and familiar environments such as Jupyter Notebooks and Anaconda work just fine. There are however several steps that aren't necessarily intuitive to a beginner. This guide is designed to outline those steps on the Amazon Web Services EC2 platform. 
 
-###Making an AWS Account
+### Making an AWS Account
 
 First, make an AWS account through Amazon [here](https://aws.amazon.com/). 
 
@@ -14,15 +14,15 @@ UCLA students and faculty should also sign up for an AWS Educate account [here](
 
 Simple applications without large compute or storage requirements can be run using the AWS Free Tier, so depending on your needs it's quite possible you can use these services without paying anything, at least for a while. Details [here](https://aws.amazon.com/free/).
 
-###Creating an EC2 Instance with Anaconda and Jupyter
+### Creating an EC2 Instance with Anaconda and Jupyter
 
-####Subscribing to Anaconda on AWS
+#### Subscribing to Anaconda on AWS
 
 AWS Marketplace offers subscriptions to a wide variety of free and paid software that can then be used in EC2 instances. 
 
 Access the marketplace [here](https://aws.amazon.com/marketplace) and search for Anaconda. Choose "Anaconda with Python 3" and follow the steps to subscribe. 
 
-####Configuring your EC2 Instance
+#### Configuring your EC2 Instance
 
 After subscribing, you should see an option to "Continue to Configuration" on the AWS Marketplace page. It should default to the latest version of Anaconda, select an appropriate AWS region and select "Continue to Launch" 
 
@@ -35,7 +35,7 @@ After subscribing, you should see an option to "Continue to Configuration" on th
      * *If you're unfamiliar with the bash command line, consider a basic tutorial like [this one](https://programminghistorian.org/en/lessons/intro-to-bash). Some level of familiarity will be necessary to configure our instance after we get it started.* 
 1. Press Launch! 
 
-####Connecting to your EC2 Instance
+#### Connecting to your EC2 Instance
 
 Now that your instance is running, let's connect to it using SSH. Mac/Linux users should have an ssh client already installed and accessible via the Terminal ```ssh``` command, Windows users should install an appropriate ssh client. 
 
@@ -62,7 +62,7 @@ Run "sudo yum update" to apply all updates.
 	``` 
 1. Go ahead and run ```sudo yum update``` to update software on your EC2 instance. Remember that with the ssh connection open, any command you run in this window will run on the EC2 instance, not your local computer. 
 
-####Configuring Anaconda
+#### Configuring Anaconda
 
 Now that we're connected to our EC2 instance, we can configure our Anaconda environment just as we would on our local computer. I'm going to follow Geoff Boeing's [instructions](https://github.com/gboeing/osmnx) for installing osmnx and its dependencies (geopandas, etc) in a new environment called "ox". 
 
@@ -75,7 +75,7 @@ Now that we're connected to our EC2 instance, we can configure our Anaconda envi
 2. Run ```conda activate ox``` to activate the environment.
 3. Run ```conda install jupyter``` to install Jupyter Notebooks
 
-####SSH Port Forwarding
+#### SSH Port Forwarding
 
 Since any notebook we start on our EC2 instance will be running there and not on our local computer, it won't automatically open in our web browser. We need to redirect one of our local TCP ports to point to the EC2 instance instead, allowing us to open remotely running notebooks in our browser. We'll use Amazon's [instructions](https://docs.aws.amazon.com/dlami/latest/devguide/setup-jupyter-configure-client.html) as a guide, slightly modifying the port number.
 
@@ -87,7 +87,7 @@ Since local Jupyter Notebooks default to port 8888 and you may have a reason to 
 	ssh -i ~/.ssh/my_key.pem -N -f -L 8889:localhost:8889 ec2-user@ec2-13-57-201-20.us-west-1.compute.amazonaws.com
 	```
 
-####Changing Jupyter Default Port
+#### Changing Jupyter Default Port
 
 Since we just forwarded port 8889 instead of 8888, we'll need to tell the version of Jupyter running on our EC2 instance to use that port instead. Let's use these [instructions](https://stackoverflow.com/questions/40373330/change-jupyter-notebooks-localhost8888-default-server-with-other/40436673) on stackoverflow as a guide. 
 
@@ -96,7 +96,7 @@ Since we just forwarded port 8889 instead of 8888, we'll need to tell the versio
 	jupyter notebook --generate-config
 	```
 
-	#####A Quick Aside About Console Text Editors
+	##### A Quick Aside About Console Text Editors
 	
 	We'll soon have to edit the configuration file to change the Jupyter default port. Since our only way to interact with our EC2 instance is  through our ssh console, we need a text editor that runs within the console. Vim is a powerful, if not immediately user-friendly, editor that comes pre-installed on most Mac/Linux machines as well as our EC2 instance.
 	
@@ -117,7 +117,7 @@ Since we just forwarded port 8889 instead of 8888, we'll need to tell the versio
 		c.NotebookApp.port = 8889
 3. Save the file and exit Vim using ```:wq``` (make sure to hit esc first so you're out of insert mode)
 
-####Optional: Change Time Zone
+#### Optional: Change Time Zone
 
 By default, EC2 instances use UTC time. If you plan on using Python modules like ```datetime``` in your code, you may prefer to have the EC2 instance use your local time.
 
@@ -134,7 +134,7 @@ Simply edit the first line to read ```ZONE="America/Los_Angeles"```, or another 
 	```
 3. Reboot the EC2 instance: ```sudo reboot``` (you'll then have to reconnect via ssh)
 
-####Starting and Accessing a Remote Jupyter Notebook
+#### Starting and Accessing a Remote Jupyter Notebook
 
 We should now be ready to run and interact with a notebook on our EC2 instance! 
 
@@ -143,7 +143,7 @@ We should now be ready to run and interact with a notebook on our EC2 instance!
 3. Pat yourself on the back, secure in the knowledge that your notebook is running on a huge Amazon server somewhere. 
 4. By default, Jupyter's file browser opens to your home directory, which may be empty. You may want to make a new folder for your notebook and other files. Either do this through Jupyter or by running a command like ```mkdir data_projects```
 
-####Copying Files with scp
+#### Copying Files with scp
 
 You will probably want to copy files to and from your EC2 instance, for example to run a notebook you've already written locally on the cloud or to download data collected via EC2. You can do this from the terminal using scp. Here are Amazon's [instructions](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html#AccessingInstancesLinuxSCP). 
 
@@ -163,7 +163,7 @@ You will probably want to copy files to and from your EC2 instance, for example 
 	scp -i ~/.ssh/WestKey2.pem ec2-user@ec2-13-57-201-20.us-west-1.compute.amazonaws.com:~/download_this.txt ~/Downloads
 	```
 	
-####Using Screen to Keep Notebooks (or whatever else) Running
+#### Using Screen to Keep Notebooks (or whatever else) Running
 
 A good reason to run notebooks in the cloud is so they can continue to run when you're away from your computer, or your computer isn't connected. Right now, even though our Jupyter Notebook server is running on the EC2 instance, the process will end when our ssh session ends. 
 
@@ -184,11 +184,11 @@ This [guide](https://opensource.com/article/17/3/introduction-gnu-screen) covers
 
 For more advanced Screen capabilities (multiple windows, etc), see the linked guide or even the Screen [manual](https://www.gnu.org/software/screen/manual/screen.html). 
 
-####A Quick Exercise with the LA Metro API
+#### A Quick Exercise with the LA Metro API
 
 The included notebook, based off of one of the ITS Data Camp exercises, uses Python's ```datetime``` module and a simple loop to collect a day's worth of vehicle location data. Although a functional proof of concept, it isn't reliable enough to be used as a final product– especially if you plan to connect multiple days of data without checking to see if it's crashed. Some suggestions for improvement are included in the notebook.
 
-####Final Notes on AWS
+#### Final Notes on AWS
 
 After you've finished gathering data, you may want to stop your instance so that it stops counting towards your usage limits. This can be done via the EC2 Console. Be sure to select "Stop" instead of "Terminate"– stopped instances can be restarted with data perserved, but terminated instances are gone forever. More info [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html).
 
