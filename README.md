@@ -187,7 +187,7 @@ For more advanced Screen capabilities (multiple windows, etc), see the linked gu
 
 #### A Quick Exercise with the LA Metro API
 
-The included notebook, based off of one of the ITS Data Camp exercises, uses Python's ```datetime``` module and a simple loop to collect a day's worth of vehicle location data. Although a functional proof of concept, it isn't reliable enough to be used as a final product– especially if you plan to connect multiple days of data without checking to see if it's crashed. Some suggestions for improvement are included in the notebook.
+The included notebook, based off of one of the ITS Data Camp exercises, uses Python's ```datetime``` module and a simple loop to collect a day's worth of vehicle location data. Although a functional proof of concept, it isn't reliable enough to be used as a final product– especially if you plan to collect multiple days of data without checking to see if it's crashed. Some suggestions for improvement are included in the notebook.
 
 #### Final Notes on AWS
 
