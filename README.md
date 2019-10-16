@@ -49,7 +49,7 @@ Now that your instance is running, let's connect to it using SSH. Mac/Linux user
 1. You should be connected, with something like this appearing in Terminal or your ssh client:
 	
 	
-	```
+```
 (ox) Erics-MacBook-Air:.ssh edasmalchi$ ssh -i "~/.ssh/my_key.pem" ec2-user@ec2-13-57-201-20.us-west-1.compute.amazonaws.com
 
        __|  __|_  )
@@ -59,7 +59,8 @@ https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
 10 package(s) needed for security, out of 17 available
 Run "sudo yum update" to apply all updates.
 (base) [ec2-user@ip-172-31-8-129 ~]$
-	``` 
+``` 
+
 1. Go ahead and run ```sudo yum update``` to update software on your EC2 instance. Remember that with the ssh connection open, any command you run in this window will run on the EC2 instance, not your local computer. 
 
 #### Configuring Anaconda
@@ -174,7 +175,7 @@ This [guide](https://opensource.com/article/17/3/introduction-gnu-screen) covers
 1. In your EC2 instance, run ```screen``` to start a Screen window
 2. From the screen window, run ```jupyter notebook```
 
-     *	   Don't forget to double-check the conda environment first
+     *	Don't forget to double-check the conda environment first
      * 	Save the notebook url somewhere, you'll need it later to reconnect
 3. After starting any notebooks you wish to keep running, type ctrl-a, then d to detach from the Screen window. You'll notice you return to your initial shell.
 4. Once detached, you can safely close your ssh connection and any running notebooks will continue to run. Close the ssh connection by running ```exit```. 
