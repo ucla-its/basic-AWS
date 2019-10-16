@@ -40,7 +40,8 @@ After subscribing, you should see an option to "Continue to Configuration" on th
 Now that your instance is running, let's connect to it using SSH. Mac/Linux users should have an ssh client already installed and accessible via the Terminal ```ssh``` command, Windows users should install an appropriate ssh client. 
 
 1. After launching, you should see a link to view the instance on the EC2 Console. You can also access the console through your AWS account.
-2. You should see something like this: (image here)
+2. You should see something like this: 
+![alt text](https://raw.githubusercontent.com/ucla-its/basic-aws/master/aws-screenshot.png "AWS Console Screenshot")
 3. Right-click on your instance and select "connect". The resulting window includes connection instructions as well as the option to use a browser-based client if you prefer.
  
     * Copy and run the example command, making sure to put the path to your .pem file inside the quotes and changing "root" to "ec2-user"
