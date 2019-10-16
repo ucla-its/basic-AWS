@@ -32,7 +32,7 @@ After subscribing, you should see an option to "Continue to Configuration" on th
 
 1.    Using Terminal (or whatever shell you've got on Linux), first navigate to the directory where you've stored the .pem file then run the command. Alternatively, run the command specifing the filepath, for example ```chmod 400 ~/.ssh/my_key.pem```. 
     
-     * *If you're unfamiliar with the bash command line, consider a basic tutorial like [this one](https://programminghistorian.org/en/lessons/intro-to-bash). Some level of familiarity will be necessary to configure our instance after we get it started.* 
+   * *If you're unfamiliar with the bash command line, consider a basic tutorial like [this one](https://programminghistorian.org/en/lessons/intro-to-bash). Some level of familiarity will be necessary to configure our instance after we get it started.* 
 1. Press Launch! 
 
 #### Connecting to your EC2 Instance
@@ -195,4 +195,4 @@ After you've finished gathering data, you may want to stop your instance so that
 
 AWS has various tools to track your usage against the Free Tier limits or more generally, this page provides a basic [introduction](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html). 
 
-We've really only scratched the surface of what AWS can do– using just two of a vast number of available services: EC2 (our compute platform), and EBS (Elastic Block Store, the default storage type for our EC2 instance). If you found this interesting, definitely learn more through the AWS documentation, AWS Educate, or whatever other resources you can find. Hope you found this intro helpful!s
+We've really only scratched the surface of what AWS can do– using just two of a vast number of available services: EC2 (our compute platform), and EBS (Elastic Block Store, the default storage type for our EC2 instance). If you found this interesting, definitely learn more through the AWS documentation, AWS Educate, or whatever other resources you can find. Hope you found this intro helpful!
