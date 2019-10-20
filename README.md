@@ -162,7 +162,7 @@ You will probably want to copy files to and from your EC2 instance, for example 
 	```
 3. To download files from your EC2 instance, simply switch the "from" and "to" filepaths:
 	```
-	scp -i ~/.ssh/WestKey2.pem ec2-user@ec2-13-57-201-20.us-west-1.compute.amazonaws.com:~/download_this.txt ~/Downloads
+	scp -i ~/.ssh/my_key.pem ec2-user@ec2-13-57-201-20.us-west-1.compute.amazonaws.com:~/download_this.txt ~/Downloads
 	```
 	
 #### Using Screen to Keep Notebooks (or whatever else) Running
