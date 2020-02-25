@@ -66,16 +66,20 @@ Run "sudo yum update" to apply all updates.
 
 #### Configuring Anaconda
 
-Now that we're connected to our EC2 instance, we can configure our Anaconda environment just as we would on our local computer. I'm going to follow Geoff Boeing's [instructions](https://github.com/gboeing/osmnx) for installing osmnx and its dependencies (geopandas, etc) in a new environment called "ox". 
+Now that we're connected to our EC2 instance, we can configure our Anaconda environment just as we would on our local computer. 
 
-1. Run these commands to install osmnx:
+* For example, if you are interested in spatial analysis you may be interested in osmnx. To install, follow Geoff Boeing's [instructions](https://github.com/gboeing/osmnx) for installing osmnx and its dependencies (geopandas, etc) in a new environment called "ox". 
 
-	```
-	conda config --prepend channels conda-forge
-	conda create -n ox --strict-channel-priority osmnx
-	```
-2. Run ```conda activate ox``` to activate the environment.
-3. Run ```conda install jupyter``` to install Jupyter Notebooks
+	1. Run these commands to install osmnx:
+
+		```
+		conda config --prepend channels conda-forge
+		conda create -n ox --strict-channel-priority osmnx
+		```
+	2. 	Run ```conda activate ox``` to activate the environment.
+	3. 	Run ```conda install jupyter``` to install Jupyter Notebooks
+
+Note that larger packages such as osmnx can take up a lot of disk space on the free t2.micro instances, so if you intend to collect and save a lot of files and don't need such advanced tools it's best to only install the packages you need.
 
 #### SSH Port Forwarding
 
