@@ -79,7 +79,7 @@ Now that we're connected to our EC2 instance, we can configure our Anaconda envi
 	2. 	Run ```conda activate ox``` to activate the environment.
 	3. 	Run ```conda install jupyter``` to install Jupyter Notebooks
 
-Note that larger packages such as osmnx can take up a lot of disk space on the free t2.micro instances, so if you intend to collect and save a lot of files and don't need such advanced tools it's best to only install the packages you need.
+* Note that larger packages such as osmnx can take up a lot of disk space on the free t2.micro instances, so if you intend to collect and save a lot of files and don't need such advanced tools it's best to only install the packages you need.
 
 #### SSH Port Forwarding
 
